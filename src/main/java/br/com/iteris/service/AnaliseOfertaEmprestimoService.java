@@ -6,10 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class AnaliseOfertaEmprestimoService implements AcaoAposAlteracaoSaldo {
+public class AnaliseOfertaEmprestimoService {
 
-    @Override
-    public void executaAcao(Conta conta) {
+    public void analisaOfertaEmprestimo(Conta conta) {
         log.info("Conta: {}, Enviar notificação de análise de perfil para oferta de empréstimo", conta.getNome());
     }
 }
