@@ -1,4 +1,4 @@
-package br.com.iteris.service;
+package br.com.iteris.service.observer;
 
 import br.com.iteris.domain.Conta;
 import lombok.extern.slf4j.Slf4j;
