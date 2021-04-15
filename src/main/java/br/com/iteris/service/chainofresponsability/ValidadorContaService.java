@@ -1,6 +1,7 @@
 package br.com.iteris.service.chainofresponsability;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import br.com.iteris.domain.Conta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,16 @@ public class ValidadorContaService {
     private List<ValidadorConta> validadorContaList;
 
     public boolean contaPodeSerCriada(Conta conta) {
-        for (ValidadorConta validadorconta : validadorContaList) {
-            if (validadorconta.isContaValidada(conta)) {
-                continue;
-            }
-            return false;
-        }
-        return true;
+        AtomicBoolean isContavalida = new AtomicBoolean(true);
+        validadorContaList
+                .stream()
+                .takeWhile(t -> isContavalida.get())
+                .forEachOrdered(validadorConta -> {
+                    if (!validadorConta.isContaValidada(conta)) {
+                        isContavalida.set(false);
+                    }
+                });
+        return isContavalida.get();
     }
 
 }

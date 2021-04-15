@@ -15,16 +15,16 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Conta c1 = new Conta("Aegon Targeryan", 5000);
-        Conta c2 = new Conta("Jaime Lannister", 5000);
         Conta c3 = new Conta("Fernandinho Beira-Mar", 5000);
         Conta c4 = new Conta("Pablo Escobar", 5000);
         Conta c5 = new Conta("xpto", 5000);
+        Conta c2 = new Conta("Jaime Lannister", 5000);
 
-        contaService.criarConta(c1);
-        contaService.criarConta(c2);
         contaService.criarConta(c3);
         contaService.criarConta(c4);
         contaService.criarConta(c5);
+        contaService.criarConta(c1);
+        contaService.criarConta(c2);
 
         contaService.realizaSaque(c1, 2000);
         contaService.realizaDeposito(c2, 6000);
