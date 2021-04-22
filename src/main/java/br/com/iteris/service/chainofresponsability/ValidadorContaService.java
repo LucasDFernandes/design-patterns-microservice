@@ -18,11 +18,7 @@ public class ValidadorContaService {
         validadorContaList
                 .stream()
                 .takeWhile(t -> isContavalida.get())
-                .forEachOrdered(validadorConta -> {
-                    if (!validadorConta.isContaValidada(conta)) {
-                        isContavalida.set(false);
-                    }
-                });
+                .forEachOrdered(validadorConta -> isContavalida.set(validadorConta.isContaValidada(conta)));
         return isContavalida.get();
     }
 
