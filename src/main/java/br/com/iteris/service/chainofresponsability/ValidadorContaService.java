@@ -14,12 +14,22 @@ public class ValidadorContaService {
     private List<ValidadorConta> validadorContaList;
 
     public boolean contaPodeSerCriada(Conta conta) {
-        AtomicBoolean isContavalida = new AtomicBoolean(true);
-        validadorContaList
-                .stream()
-                .takeWhile(t -> isContavalida.get())
-                .forEachOrdered(validadorConta -> isContavalida.set(validadorConta.isContaValidada(conta)));
-        return isContavalida.get();
+        for (ValidadorConta validadorconta : validadorContaList) {
+            if (validadorconta.isContaValidada(conta)) {
+                continue;
+            }
+            return false;
+        }
+        return true;
     }
+
+//    public boolean contaPodeSerCriada(Conta conta) {
+//        AtomicBoolean isContavalida = new AtomicBoolean(true);
+//        validadorContaList
+//                .stream()
+//                .takeWhile(t -> isContavalida.get())
+//                .forEachOrdered(validadorConta -> isContavalida.set(validadorConta.isContaValidada(conta)));
+//        return isContavalida.get();
+//    }
 
 }
