@@ -26,7 +26,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 //        contaService.criarConta(c1);
 //        contaService.criarConta(c2);
 
-//        contaService.realizaSaque(c1, 2000);
-//        contaService.realizaDeposito(c2, 6000);
+        contaService.realizaSaque(c1, 2000);
+        contaService.realizaDeposito(c2, 6000);
     }
 }
